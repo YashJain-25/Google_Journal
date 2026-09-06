@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Material Design 3 Light Tokens (Pixel & Google Gemini Blue) */
+  --md-sys-color-primary: #0b57d0;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #d3e3fd;
+  --md-sys-color-on-primary-container: #041e49;
+  --md-sys-color-primary-hover: #0842a0;
+
+  --md-sys-color-surface: #ffffff;
+  --md-sys-color-on-surface: #1f1f1f;
+  --md-sys-color-surface-dim: #ded8e1;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #f8fafd;
+  --md-sys-color-surface-container: #f0f4f9;
+  --md-sys-color-surface-container-high: #e9eef6;
+  --md-sys-color-surface-container-highest: #e1e7f0;
+
+  --md-sys-color-surface-variant: #e1e3e1;
+  --md-sys-color-on-surface-variant: #444746;
+  --md-sys-color-outline: #747775;
+  --md-sys-color-outline-variant: #c4c7c5;
+
+  --md-sys-color-secondary-container: #c2e7ff;
+  --md-sys-color-on-secondary-container: #001d35;
+
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-error-container: #ffdad6;
+  --md-sys-color-on-error-container: #410002;
+
+  --md-elevation-1: 0 1px 2px 0 rgba(60,64,67,0.2), 0 1px 3px 1px rgba(60,64,67,0.1);
+  --md-elevation-2: 0 1px 2px 0 rgba(60,64,67,0.25), 0 2px 6px 2px rgba(60,64,67,0.12);
+  --md-elevation-3: 0 4px 8px 3px rgba(60,64,67,0.12), 0 1px 3px rgba(60,64,67,0.2);
+
+  --font-heading: 'Google Sans', 'Product Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html.dark, [data-theme="dark"] {
+  /* Google Gemini & Pixel Material You Dynamic Color Tokens (Screenshot Match) */
+  --md-sys-color-primary: #a8c7fa;
+  --md-sys-color-on-primary: #041e49;
+  --md-sys-color-primary-container: #004a77;
+  --md-sys-color-on-primary-container: #d3e3fd;
+  --md-sys-color-primary-hover: #c2e7ff;
+
+  --md-sys-color-surface: #131314;
+  --md-sys-color-on-surface: #e3e3e3;
+  --md-sys-color-surface-dim: #131314;
+  --md-sys-color-surface-container-lowest: #0e0e0f;
+  --md-sys-color-surface-container-low: #191a1b;
+  --md-sys-color-surface-container: #1e1f20;
+  --md-sys-color-surface-container-high: #282a2c;
+  --md-sys-color-surface-container-highest: #333538;
+
+  --md-sys-color-surface-variant: #282a2c;
+  --md-sys-color-on-surface-variant: #c4c7c5;
+  --md-sys-color-outline: #8e918f;
+  --md-sys-color-outline-variant: rgba(255, 255, 255, 0.08);
+
+  --md-sys-color-secondary-container: #004a77;
+  --md-sys-color-on-secondary-container: #d3e3fd;
+
+  --md-sys-color-error: #f2b8b5;
+  --md-sys-color-error-container: #601410;
+  --md-sys-color-on-error-container: #f9dedc;
+
+  --md-elevation-1: 0 1px 3px 0 rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06);
+  --md-elevation-2: 0 4px 16px 0 rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.08);
+  --md-elevation-3: 0 8px 30px 0 rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.12);
+}
+
+@layer base {
+  * {
+    border-color: var(--md-sys-color-outline-variant);
+  }
+
+  body {
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html.dark body, [data-theme="dark"] body {
+    background-color: #131314;
+    background-image: radial-gradient(circle at 50% 38%, rgba(66, 133, 244, 0.08) 0%, rgba(26, 115, 232, 0.03) 38%, transparent 70%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+
+  /* M3 Focus Rings */
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  a:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* Material Symbols Outlined font class */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: 300;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+  user-select: none;
+}
+
+/* Scrollbars matching Google / Keep subtle aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--md-sys-color-outline-variant);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--md-sys-color-outline);
+  background-clip: padding-box;
+}
+
+/* Markdown body formatting matching Gemini / Keep web reader */
+.markdown-body {
+  color: var(--md-sys-color-on-surface);
+  line-height: 1.625;
+  font-size: 15px;
+}
+.markdown-body p {
+  margin-bottom: 0.85rem;
+}
+.markdown-body p:last-child {
+  margin-bottom: 0;
+}
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  font-family: var(--font-heading);
+  color: var(--md-sys-color-on-surface);
+  font-weight: 500;
+  margin-top: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+.markdown-body ul, .markdown-body ol {
+  margin-left: 1.5rem;
+  margin-bottom: 0.85rem;
+}
+.markdown-body ul {
+  list-style-type: disc;
+}
+.markdown-body ol {
+  list-style-type: decimal;
+}
+.markdown-body li {
+  margin-bottom: 0.35rem;
+}
+.markdown-body code {
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.375rem;
+  font-size: 0.875em;
+  font-family: 'JetBrains Mono', monospace;
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+.markdown-body pre {
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+}
+.markdown-body blockquote {
+  border-left: 3px solid var(--md-sys-color-primary);
+  padding-left: 1rem;
+  color: var(--md-sys-color-on-surface-variant);
+  margin: 1rem 0;
+}

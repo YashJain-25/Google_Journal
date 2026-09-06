@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" class="light" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('gemini_journal_theme');
+          if (saved === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script>
+      (function() {
+        try {
+          if (typeof window !== 'undefined') {
+            var currentFetch = window.fetch ? window.fetch.bind(window) : undefined;
+            var proto = Object.getPrototypeOf(window) || (typeof Window !== 'undefined' ? Window.prototype : null);
+            var desc = Object.getOwnPropertyDescriptor(window, 'fetch') ||
+                       (proto ? Object.getOwnPropertyDescriptor(proto, 'fetch') : null);
+
+            if (!desc || !desc.set) {
+              Object.defineProperty(window, 'fetch', {
+                get: function() {
+                  return currentFetch;
+                },
+                set: function(newFetch) {
+                  currentFetch = typeof newFetch === 'function' ? newFetch : currentFetch;
+                },
+                configurable: true,
+                enumerable: true
+              });
+            }
+          }
+        } catch (e) {
+          try {
+            var p = Object.getPrototypeOf(window) || (typeof Window !== 'undefined' ? Window.prototype : null);
+            if (p) {
+              var pFetch = window.fetch ? window.fetch.bind(window) : undefined;
+              Object.defineProperty(p, 'fetch', {
+                get: function() {
+                  return pFetch;
+                },
+                set: function(newFetch) {
+                  pFetch = typeof newFetch === 'function' ? newFetch : pFetch;
+                },
+                configurable: true,
+                enumerable: true
+              });
+            }
+          } catch (err) {}
+        }
+      })();
+    </script>
+    <title>Personal Gemini Journal</title>
+    <meta name="description" content="A secure, production-grade personal journal powered by Gemini and Firebase with zero-trust architecture and UID-isolated Firestore data." />
+    <meta property="og:title" content="Personal Gemini Journal" />
+    <meta property="og:description" content="A secure, production-grade personal journal powered by Gemini and Firebase with zero-trust architecture and UID-isolated Firestore data." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M8 12c0-2.2 1.8-4 4-4h12v20H12c-2.2 0-4-1.8-4-4V12z' fill='%234285F4'/%3E%3Cpath d='M24 8h12c2.2 0 4 1.8 4 4v12c0 2.2-1.8 4-4 4H24V8z' fill='%23EA4335'/%3E%3Cpath d='M24 28h12c2.2 0 4 1.8 4 4v4c0 2.2-1.8 4-4 4H24V28z' fill='%23FBBC05'/%3E%3Cpath d='M8 24c0 2.2 1.8 4 4 4h12v12H12c-2.2 0-4-1.8-4-4V24z' fill='%2334A853'/%3E%3Crect x='22' y='8' width='4' height='32' rx='2' fill='%23FFF' fill-opacity='.3'/%3E%3Cpath d='M24 16c0 4.4-3.6 8-8 8 4.4 0 8 3.6 8 8 0-4.4 3.6-8 8-8-4.4 0-8-3.6-8-8z' fill='%23FFF'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[var(--md-sys-color-surface)] text-[var(--md-sys-color-on-surface)] antialiased transition-colors duration-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

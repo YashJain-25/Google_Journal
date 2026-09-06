@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 1. Global default-deny safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // User-isolated paths under /users/{uid}
+    match /users/{uid} {
+      // User profile level
+      allow read, write: if isOwner(uid);
+
+      // Sessions subcollection
+      match /sessions/{sessionId} {
+        allow read, write: if isOwner(uid) && isValidId(sessionId);
+
+        // Messages subcollection within a session
+        match /messages/{messageId} {
+          allow read, write: if isOwner(uid) && isValidId(messageId);
+        }
+
+        // Summary subdocument (or collection) - owner read/write
+        match /summary/{summaryId=**} {
+          allow read, write: if isOwner(uid);
+        }
+      }
+
+      // Campaign compliance and interaction logging
+      match /interactions/{interactionId} {
+        allow read, write: if isOwner(uid);
+      }
+    }
+  }
+}
