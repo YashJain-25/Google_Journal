@@ -1,1 +1,12 @@
-
+{
+  "projectId": "agent-gen-ai-505606",
+  "appId": "1:749526824135:web:0c11fc1dd8a90cada53ae2",
+  "apiKey": "AIzaSyARUs7hLUPcWfAgrnDulnYXYm16dARN6WI",
+  "authDomain": "agent-gen-ai-505606.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-personalgeminijo-29fbdef3-39df-44fe-bb73-3153ffe11d2d",
+  "storageBucket": "agent-gen-ai-505606.firebasestorage.app",
+  "messagingSenderId": "749526824135",
+  "measurementId": "",
+  "oAuthClientId": "749526824135-um5kcimrm4l7i7auu7hkmbh9hsd1fqvb.apps.googleusercontent.com",
+  "recaptchaSiteKey": ""
+}
